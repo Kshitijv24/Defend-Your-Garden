@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 45218234520911020}
   - component: {fileID: 45218234520911011}
   - component: {fileID: 45218234520911010}
+  - component: {fileID: 7802393119379315735}
   m_Layer: 0
   m_Name: Cactus
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45218234520911009}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.0717924, y: -1.0028698, z: 0.63992506}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
@@ -148,3 +149,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1388429479723192008, guid: d185187ae4646484784f4fb03e8e5439, type: 3}
   gun: {fileID: 45218234215258358}
+--- !u!114 &7802393119379315735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45218234520911009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17d877f3da95c43aff5311cc097875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starCost: 100
