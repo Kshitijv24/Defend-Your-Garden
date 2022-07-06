@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2328591194178377071}
   - component: {fileID: 2328591194178377064}
   - component: {fileID: 2328591194178377070}
+  - component: {fileID: -7706309360647600074}
   m_Layer: 0
   m_Name: Gravestone
   m_TagString: Untagged
@@ -72,6 +73,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9616051, y: 0.99040127}
   m_EdgeRadius: 0
+--- !u!114 &-7706309360647600074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328591194178377065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b57b2316ee98040b20902dbfd242f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  deathVFX: {fileID: 0}
 --- !u!1 &2328591195936530346
 GameObject:
   m_ObjectHideFlags: 0
