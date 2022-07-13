@@ -2,7 +2,25 @@ using UnityEngine;
 
 public class DefenderSpawner : MonoBehaviour
 {
+    private const string DEFENDER_PARENT_NAME = "Defenders";
+
     private Defender defender;
+    private GameObject defenderParent;
+
+    private void Start()
+    {
+        CreateDefenderParent();
+    }
+
+    private void CreateDefenderParent()
+    {
+        defenderParent = GameObject.Find(DEFENDER_PARENT_NAME);
+
+        if (!defenderParent)
+        {
+            defenderParent = new GameObject(DEFENDER_PARENT_NAME);
+        }
+    }
 
     private void OnMouseDown()
     {
@@ -44,5 +62,6 @@ public class DefenderSpawner : MonoBehaviour
     private void SpawnDefender(Vector2 roundedPos)
     {
         Defender newDefender = Instantiate(defender, roundedPos, Quaternion.identity) as Defender;
+        newDefender.transform.parent = defenderParent.transform;
     }
 }
