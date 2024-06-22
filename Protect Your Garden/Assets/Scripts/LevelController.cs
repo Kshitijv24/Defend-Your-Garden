@@ -16,19 +16,14 @@ public class LevelController : MonoBehaviour
         loseLabel.SetActive(false);
     }
 
-    public void AttackerSpawned()
-    {
-		numberOfAttackers++;
-    }
+    public void AttackerSpawned() => numberOfAttackers++;
 
-	public void AttackerKilled()
+    public void AttackerKilled()
     {
 		numberOfAttackers--;
 
 		if(numberOfAttackers <= 0 && levelTimerFinished == true)
-        {
             StartCoroutine(HandleWinCondition());
-        }
     }
 
     IEnumerator HandleWinCondition()
@@ -56,8 +51,6 @@ public class LevelController : MonoBehaviour
 		AttackerSpawner[] spawnerArray = FindObjectsOfType<AttackerSpawner>();
 
 		foreach(AttackerSpawner spawner in spawnerArray)
-        {
-			spawner.StopSpawning();
-        }
+            spawner.StopSpawning();
     }
 }

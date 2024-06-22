@@ -3,7 +3,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
-    [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject ShootingPoint;
 
     private const string PROJECTILE_PARENT_NAME = "Projectiles";
 
@@ -11,10 +11,11 @@ public class Shooter : MonoBehaviour
     private Animator animator;
     private GameObject projectileParent;
 
+    private void Awake() => animator = GetComponent<Animator>();
+
     private void Start()
     {
         SetLaneSpawner();
-        animator = GetComponent<Animator>();
         CreateProjectileParent();
     }
 
@@ -23,21 +24,15 @@ public class Shooter : MonoBehaviour
         projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
 
         if (!projectileParent)
-        {
             projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
-        }
     }
 
     private void Update()
     {
         if (IsAttackerInLane())
-        {
             animator.SetBool("isAttacking", true);
-        }
         else
-        {
             animator.SetBool("isAttacking", false);
-        }
     }
 
     private void SetLaneSpawner()
@@ -49,29 +44,15 @@ public class Shooter : MonoBehaviour
             bool isCloseEnough = (Mathf.Abs(spawner.transform.position.y - transform.position.y) <= Mathf.Epsilon);
 
             if (isCloseEnough)
-            {
                 myLaneSpawner = spawner;
-            }
         }
     }
 
-    private bool IsAttackerInLane()
-    {
-        if (myLaneSpawner.transform.childCount <= 0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+    private bool IsAttackerInLane() => myLaneSpawner.transform.childCount > 0;
 
     public void Fire()
     {
-        GameObject newProjectile = Instantiate(projectile, gun.transform.position, Quaternion.identity) as GameObject;
-
+        GameObject newProjectile = Instantiate(projectile, ShootingPoint.transform.position, Quaternion.identity);
         newProjectile.transform.parent = projectileParent.transform;
-
     }
 }

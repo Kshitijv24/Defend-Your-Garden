@@ -7,15 +7,15 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float levelTimer = 10f;
 
     private bool triggeredLevelFinished = false;
+    private Slider slider;
+
+    private void Awake() => slider = GetComponent<Slider>();
 
     private void Update()
     {
-        if(triggeredLevelFinished == true)
-        {
-            return;
-        }
+        if(triggeredLevelFinished == true) return;
 
-        GetComponent<Slider>().value = Time.timeSinceLevelLoad / levelTimer;
+        slider.value = Time.timeSinceLevelLoad / levelTimer;
 
         bool timerFinished = (Time.timeSinceLevelLoad >= levelTimer);
 

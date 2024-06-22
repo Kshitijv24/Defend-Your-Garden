@@ -7,35 +7,24 @@ public class DefenderSpawner : MonoBehaviour
     private Defender defender;
     private GameObject defenderParent;
 
-    private void Start()
-    {
-        CreateDefenderParent();
-    }
+    private void Start() => CreateDefenderParent();
 
     private void CreateDefenderParent()
     {
         defenderParent = GameObject.Find(DEFENDER_PARENT_NAME);
 
         if (!defenderParent)
-        {
             defenderParent = new GameObject(DEFENDER_PARENT_NAME);
-        }
     }
 
-    private void OnMouseDown()
-    {
-        AttemptToPlaceDefenderAt(GetSquareClicked());
-    }
+    private void OnMouseDown() => AttemptToPlaceDefenderAt(GetSquareClicked());
 
-    public void SetSelectedDefender(Defender defenderToSelect)
-    {
-        defender = defenderToSelect;
-    }
+    public void SetSelectedDefender(Defender defenderToSelect) => defender = defenderToSelect;
 
     private void AttemptToPlaceDefenderAt(Vector2 gridPos)
     {
         StarDisplay starDisplay = FindObjectOfType<StarDisplay>();
-        int defenderCost = defender.GetStarCose();
+        int defenderCost = defender.GetStarCost();
 
         if (starDisplay.HaveEnoughStars(defenderCost))
         {

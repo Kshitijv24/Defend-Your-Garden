@@ -4,15 +4,13 @@ public class MusicPlayer : MonoBehaviour
 {
     AudioSource audioSource;
 
-	private void Start()
+    private void Awake() => audioSource = GetComponent<AudioSource>();
+
+    private void Start()
     {
         DontDestroyOnLoad(this);
-        audioSource = GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefsController.GetMasterVolume();
     }
 
-    public void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
-    }
+    public void SetVolume(float volume) => audioSource.volume = volume;
 }

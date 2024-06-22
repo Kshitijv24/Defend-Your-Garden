@@ -18,10 +18,7 @@ public class AttackerSpawner : MonoBehaviour
         }
     }
 
-    public void StopSpawning()
-    {
-        spawn = false;
-    }
+    public void StopSpawning() => spawn = false;
 
     private void SpawnAttacker()
     {
@@ -32,9 +29,7 @@ public class AttackerSpawner : MonoBehaviour
 
     private void Spawn(Attacker myAttacker)
     {
-        Attacker newAttacker = Instantiate(myAttacker, transform.position, Quaternion.identity)
-                    as Attacker;
-
+        Attacker newAttacker = Instantiate(myAttacker, transform.position, Quaternion.identity);
         newAttacker.transform.parent = transform;
     }
 }

@@ -13,9 +13,7 @@ public class LevelLoader : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         if(currentSceneIndex == 0)
-        {
             StartCoroutine("WaitForTime");
-        }
     }
 
     IEnumerator WaitForTime()
@@ -36,23 +34,17 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("StartScreen");
     }
 
-    public void LoadOptionsMenu()
-    {
-        SceneManager.LoadScene("OptionsScreen");
-    }
+    public void LoadOptionsMenu() => SceneManager.LoadScene("OptionsScreen");
 
     public void LoadNextScene()
     {
+        if(currentSceneIndex >= 4)
+            currentSceneIndex = 0;
+
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
-    public void LoadYouLose()
-    {
-        SceneManager.LoadScene("LoseScreen");
-    }
+    public void LoadYouLose() => SceneManager.LoadScene("LoseScreen");
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+    public void Quit() => Application.Quit();
 }

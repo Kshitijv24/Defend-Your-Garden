@@ -8,19 +8,18 @@ public class LivesDisplay : MonoBehaviour
 
     private TextMeshProUGUI livesText;
     private int lives;
+    private LevelController levelController;
 
     private void Start()
     {
+        levelController = FindObjectOfType<LevelController>();
         lives = baseLives - PlayerPrefsController.GetDifficulty();
         livesText = GetComponent<TextMeshProUGUI>();
         UpdateStarDisplay();
         Debug.Log("difficulty is currently set to " + PlayerPrefsController.GetDifficulty());
     }
 
-    private void UpdateStarDisplay()
-    {
-        livesText.text = lives.ToString();
-    }
+    private void UpdateStarDisplay() => livesText.text = lives.ToString();
 
     public void TakeLife()
     {
@@ -28,8 +27,6 @@ public class LivesDisplay : MonoBehaviour
         UpdateStarDisplay();
 
         if(lives <= 0)
-        {
-            FindObjectOfType<LevelController>().HandleLoseCondition();
-        }
+            levelController.HandleLoseCondition();
     }
 }

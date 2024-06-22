@@ -7,13 +7,8 @@ public class Fox : MonoBehaviour
         GameObject otherObject = collision.gameObject;
 
         if (otherObject.GetComponent<Gravestone>())
-        {
             GetComponent<Animator>().SetTrigger("jumpTrigger");
-        }
-
         else if (otherObject.GetComponent<Defender>())
-        {
             GetComponent<Attacker>().Attack(otherObject);
-        }
     }
 }

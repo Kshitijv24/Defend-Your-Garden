@@ -7,8 +7,6 @@ public class Lizard : MonoBehaviour
         GameObject otherObject = collision.gameObject;
 
         if (otherObject.GetComponent<Defender>())
-        {
             GetComponent<Attacker>().Attack(otherObject);
-        }
     }
 }

@@ -9,23 +9,21 @@ public class OptionsController : MonoBehaviour
     [SerializeField] private Slider difficultySlider;
     [SerializeField] private int defaultDifficulty = 0;
 
-	private void Start()
+    private MusicPlayer musicPlayer;
+
+    private void Start()
     {
+        musicPlayer = FindObjectOfType<MusicPlayer>();
         volumeSlider.value = PlayerPrefsController.GetMasterVolume();
         difficultySlider.value = PlayerPrefsController.GetDifficulty();
     }
 
     private void Update()
     {
-        MusicPlayer musicPlayer = FindObjectOfType<MusicPlayer>();
         if (musicPlayer)
-        {
             musicPlayer.SetVolume(volumeSlider.value);
-        }
         else
-        {
             Debug.LogWarning("No music player found... did you start form the splash screen?");
-        }
     }
 
     public void SaveAndExit()
