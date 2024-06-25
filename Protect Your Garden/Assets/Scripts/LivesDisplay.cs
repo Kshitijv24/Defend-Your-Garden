@@ -8,13 +8,12 @@ public class LivesDisplay : MonoBehaviour
 
     private TextMeshProUGUI livesText;
     private int lives;
-    private LevelController levelController;
+
+    private void Awake() => livesText = GetComponent<TextMeshProUGUI>();
 
     private void Start()
     {
-        levelController = FindObjectOfType<LevelController>();
         lives = baseLives - PlayerPrefsController.GetDifficulty();
-        livesText = GetComponent<TextMeshProUGUI>();
         UpdateStarDisplay();
         Debug.Log("difficulty is currently set to " + PlayerPrefsController.GetDifficulty());
     }
@@ -26,7 +25,7 @@ public class LivesDisplay : MonoBehaviour
         lives -= damage;
         UpdateStarDisplay();
 
-        if(lives <= 0)
-            levelController.HandleLoseCondition();
+        if (lives <= 0)
+            LevelController.Instance.HandleLoseCondition();
     }
 }

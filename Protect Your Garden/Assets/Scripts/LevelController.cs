@@ -3,12 +3,28 @@ using System.Collections;
 
 public class LevelController : MonoBehaviour
 {
-	[SerializeField] private GameObject winLabel;
+    public static LevelController Instance { get; private set; }
+
+    [SerializeField] private GameObject winLabel;
     [SerializeField] private GameObject loseLabel;
     [SerializeField] private float waitToLoad = 4f;
 
 	private int numberOfAttackers = 0;
 	private bool levelTimerFinished = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            Debug.Log("There are more than one " + this.GetType() + " Instances", this);
+            return;
+        }
+    }
 
     private void Start()
     {
