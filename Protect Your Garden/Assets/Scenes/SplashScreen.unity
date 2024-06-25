@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5842834782647887393, guid: 6e4c44e8a7d8cf043a676c04e2d702fb, type: 3}
       propertyPath: timeToWait
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5842834782647887394, guid: 6e4c44e8a7d8cf043a676c04e2d702fb, type: 3}
       propertyPath: m_RootOrder
