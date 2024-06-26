@@ -11,6 +11,9 @@ public class LevelController : MonoBehaviour
 
 	private int numberOfAttackers = 0;
 	private bool levelTimerFinished = false;
+    private AttackerSpawner[] spawnerArray;
+    private AudioSource audioSource;
+    private LevelLoader levelLoader;
 
     private void Awake()
     {
@@ -24,12 +27,17 @@ public class LevelController : MonoBehaviour
             Debug.Log("There are more than one " + this.GetType() + " Instances", this);
             return;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         winLabel.SetActive(false);
         loseLabel.SetActive(false);
+
+        spawnerArray = FindObjectsOfType<AttackerSpawner>();
+        levelLoader = FindObjectOfType<LevelLoader>();
     }
 
     public void AttackerSpawned() => numberOfAttackers++;
@@ -45,9 +53,9 @@ public class LevelController : MonoBehaviour
     IEnumerator HandleWinCondition()
     {
         winLabel.SetActive(true);
-        GetComponent<AudioSource>().Play();
+        audioSource.Play();
         yield return new WaitForSeconds(waitToLoad);
-        FindObjectOfType<LevelLoader>().LoadNextScene();
+        levelLoader.LoadNextScene();
     }
 
     public void HandleLoseCondition()
@@ -64,8 +72,6 @@ public class LevelController : MonoBehaviour
 
 	private void StopSpawners()
     {
-		AttackerSpawner[] spawnerArray = FindObjectsOfType<AttackerSpawner>();
-
 		foreach(AttackerSpawner spawner in spawnerArray)
             spawner.StopSpawning();
     }
